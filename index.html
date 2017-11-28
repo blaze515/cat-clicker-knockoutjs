@@ -49,6 +49,12 @@
                         <div id="cat-selector" class="col-md-12">
                             <h3>Select a cat:</h3>
                         </div>
+                        <!-- ko foreach: catList -->
+                        <div class="col-md-12">
+                            <img class="thumbnail" data-bind="attr: {src: imgSrc}" src="">
+                            <button class="btn btn-info cat-btn" data-bind="click: $parent.changeCat, text: name"></button>
+                        </div>
+                        <!-- /ko -->
                     </div>
                 </div>
                 <div class="col-md-8">
