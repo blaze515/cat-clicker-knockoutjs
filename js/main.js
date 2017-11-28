@@ -1,13 +1,25 @@
 var ViewModel = function() {
-    this.clickCount = ko.observable(0);
-    this.name = ko.observable('Mike');
-    this.imgSrc = ko.observable('img/mike.jpg');
-    this.imgAttribution = ko.observable('http://www.kedi.gen.tr/images/yavru-kedi.jpg');
+    var self = this;
 
     this.incrementCounter = function() {
-        this.clickCount(this.clickCount() + 1);
+        self.currentCat().clickCount(self.currentCat().clickCount() + 1);
     };
 
+    this.currentCat = ko.observable(new Cat({
+        clickCount: 0,
+        name: 'Mike',
+        imgSrc: 'img/mike.jpg',
+        imgAttribution: 'http://www.kedi.gen.tr/images/yavru-kedi.jpg',
+        nicknames: [{nickname: 'Mikey'}, {nickname: 'Michael'}, {nickname: 'Dungeon Master'}]
+    }));
+};
+
+var Cat = function (data) {
+    this.clickCount = ko.observable(data.clickCount);
+    this.name = ko.observable(data.name);
+    this.imgSrc = ko.observable(data.imgSrc);
+    this.imgAttribution = ko.observable(data.imgAttribution);
+    this.nicknames = ko.observableArray(data.nicknames);
     this.catTitle = ko.computed(function(){
         return "Meet " + this.name();
     }, this);

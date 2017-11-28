@@ -52,15 +52,21 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="row">
+                    <div data-bind="with: currentCat" class="row">
                         <div class="col-md-12">
                             <h3 data-bind="text: catTitle" id="selected-cat">Meet (Cat Name)</h3>
                         </div>
                         <div class="col-md-12">
-                            <img data-bind="click: incrementCounter, attr: {src: imgSrc}" id="cat-img" src="" alt="cat picture">
+                            <img data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}" id="cat-img" src="" alt="cat picture">
                         </div>
                         <div class="col-md-12">
                             <p data-bind="text: catCounter" id="clicks">Number of Clicks: 0</p>
+                        </div>
+                        <div class="col-md-12">
+                            <h4>Nicknames: </h4>
+                            <ul data-bind="foreach: nicknames">
+                                <li><span data-bind="text: nickname"></span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
